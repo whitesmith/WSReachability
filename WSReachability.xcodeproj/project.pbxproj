@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		D7ED1ED11DB93BFE00575C12 /* WSReachability.h in Headers */ = {isa = PBXBuildFile; fileRef = D7ED1ED01DB93BFE00575C12 /* WSReachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7ED1EE81DB93C6500575C12 /* WSReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ED1EE71DB93C6500575C12 /* WSReachability.swift */; };
+		D7ED1F081DB9457800575C12 /* WSReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ED1F071DB9457800575C12 /* WSReachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D7ED1ECD1DB93BFE00575C12 /* WSReachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WSReachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7ED1ED01DB93BFE00575C12 /* WSReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WSReachability.h; sourceTree = "<group>"; };
 		D7ED1ED21DB93BFE00575C12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7ED1EE71DB93C6500575C12 /* WSReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSReachability.swift; sourceTree = "<group>"; };
+		D7ED1F071DB9457800575C12 /* WSReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WSReachability.swift; path = Source/WSReachability.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				D7ED1ED01DB93BFE00575C12 /* WSReachability.h */,
-				D7ED1EE71DB93C6500575C12 /* WSReachability.swift */,
+				D7ED1F071DB9457800575C12 /* WSReachability.swift */,
 				D7ED1ED21DB93BFE00575C12 /* Info.plist */,
 			);
 			path = WSReachability;
@@ -133,7 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7ED1EE81DB93C6500575C12 /* WSReachability.swift in Sources */,
+				D7ED1F081DB9457800575C12 /* WSReachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +286,7 @@
 				D7ED1EE31DB93BFE00575C12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,17 +9,17 @@
 import Foundation
 import SystemConfiguration
 
-public class WSReachability {
+open class WSReachability {
 
-    public let log = WSReachabilityLog()
-    public let host: String
+    open let log = WSReachabilityLog()
+    open let host: String
 
-    public typealias OSReachableCallback = (reachable: Bool) -> Void
-    private var completion: OSReachableCallback?
-    private var reachabilityRef: SCNetworkReachability
+    public typealias OSReachableCallback = (_ reachable: Bool) -> Void
+    fileprivate var completion: OSReachableCallback?
+    fileprivate var reachabilityRef: SCNetworkReachability
 
-    private var lastReachabilityFlag: Bool?
-    private var lastReachabilityTime = NSDate()
+    fileprivate var lastReachabilityFlag: Bool?
+    fileprivate var lastReachabilityTime = Date()
 
     public init?(forHost host: String) {
         self.host = host
@@ -34,15 +34,16 @@ public class WSReachability {
         self.off()
     }
 
-    public func listen(completion: OSReachableCallback) {
+    open func listen(_ completion: @escaping OSReachableCallback) {
         self.off()
         self.completion = completion
 
         var context = SCNetworkReachabilityContext(version: 0, info: nil, retain: nil, release: nil, copyDescription: nil)
-        context.info = UnsafeMutablePointer(Unmanaged.passUnretained(self).toOpaque())
+
+        context.info = Unmanaged<WSReachability>.passUnretained(self).toOpaque()
 
         if SCNetworkReachabilitySetCallback(reachabilityRef, OSReachability_Callback, &context) {
-            if SCNetworkReachabilityScheduleWithRunLoop(reachabilityRef, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode) {
+            if SCNetworkReachabilityScheduleWithRunLoop(reachabilityRef, CFRunLoopGetCurrent(), CFRunLoopMode.defaultMode as! CFString) {
                 log.emit("Started listening for host \(host)")
             }
             else {
@@ -54,34 +55,34 @@ public class WSReachability {
         }
     }
 
-    public func off() {
-        SCNetworkReachabilityUnscheduleFromRunLoop(reachabilityRef, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode)
+    open func off() {
+        SCNetworkReachabilityUnscheduleFromRunLoop(reachabilityRef, CFRunLoopGetCurrent(), CFRunLoopMode.defaultMode as! CFString)
         log.emit("Stopped listening for host \(host)")
     }
 
-    internal func emit(reachable reachable: Bool) {
+    internal func emit(reachable: Bool) {
         log.emit("Host \(host) is \(reachable ? "available" : "unavailable")")
-        let currentTime = NSDate()
+        let currentTime = Date()
         defer {
             lastReachabilityFlag = reachable
         }
 
         // If it has the same reachability flag and was emitted almost immediately after the last one, then ignore it.
-        if lastReachabilityFlag == .Some(reachable) && currentTime.timeIntervalSinceDate(lastReachabilityTime) < 0.5 {
+        if lastReachabilityFlag == .some(reachable) && currentTime.timeIntervalSince(lastReachabilityTime) < 0.5 {
             return
         }
 
         lastReachabilityTime = currentTime
-        dispatch_async(dispatch_get_main_queue()) { [weak self] in
+        DispatchQueue.main.async { [weak self] in
             // Notify
-            self?.completion?(reachable: reachable)
+            self?.completion?(reachable)
         }
     }
 
-    public var isReachable: Bool {
+    open var isReachable: Bool {
         var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
         if SCNetworkReachabilityGetFlags(reachabilityRef, &flags) {
-            return flags.contains(SCNetworkReachabilityFlags.Reachable)
+            return flags.contains(SCNetworkReachabilityFlags.reachable)
         }
         else {
             return false
@@ -90,30 +91,33 @@ public class WSReachability {
 
 }
 
-internal func OSReachability_Callback(reachability: SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutablePointer<Void>) {
-    let instance = Unmanaged<WSReachability>.fromOpaque(COpaquePointer(info)).takeUnretainedValue()
-    instance.emit(reachable: flags.contains(SCNetworkReachabilityFlags.Reachable))
+internal func OSReachability_Callback(_ reachability: SCNetworkReachability, flags: SCNetworkReachabilityFlags, info: UnsafeMutableRawPointer?) {
+    guard  let info = info else {
+        return
+    }
+    let instance = Unmanaged<WSReachability>.fromOpaque(info).takeUnretainedValue()
+    instance.emit(reachable: flags.contains(SCNetworkReachabilityFlags.reachable))
 }
 
-public class WSReachabilityLog {
+open class WSReachabilityLog {
 
     public struct WSReachabilityLogListener {
-        public typealias ListenerCallback = (message: String) -> Void
+        public typealias ListenerCallback = (_ message: String) -> Void
         public let callback: ListenerCallback
     }
 
-    private var listener: WSReachabilityLogListener?
+    fileprivate var listener: WSReachabilityLogListener?
 
-    public func subscribe(callback: WSReachabilityLogListener.ListenerCallback) {
+    open func subscribe(_ callback: @escaping WSReachabilityLogListener.ListenerCallback) {
         listener = WSReachabilityLogListener(callback: callback)
     }
 
-    public func unsubscribe() {
+    open func unsubscribe() {
         listener = nil
     }
 
-    internal func emit(message: String) {
-        listener?.callback(message: message)
+    internal func emit(_ message: String) {
+        listener?.callback(message)
     }
 
 }

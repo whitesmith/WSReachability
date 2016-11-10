@@ -2,7 +2,7 @@
 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
 [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/WSLogger.svg)](https://cocoapods.org/pods/WSLogger)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/WSReachability.svg)](https://cocoapods.org/pods/WSReachability)
 [![Swift 3.0](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms iOS](https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat)](http://www.apple.com/ios/)
 [![Build Status](https://www.bitrise.io/app/c0d00066e83871d0.svg?token=F4rPP7Jp0rT4dUqaE63fuw&branch=master)](https://www.bitrise.io/app/059bc89743c769dc)

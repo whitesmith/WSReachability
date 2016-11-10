@@ -5,7 +5,6 @@
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/WSReachability.svg)](https://cocoapods.org/pods/WSReachability)
 [![Swift 3.0](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms iOS](https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat)](http://www.apple.com/ios/)
-[![Build Status](https://www.bitrise.io/app/c0d00066e83871d0.svg?token=F4rPP7Jp0rT4dUqaE63fuw&branch=master)](https://www.bitrise.io/app/059bc89743c769dc)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://opensource.org/licenses/MIT)
 
 Monitor the network state of an iOS device using the System Configuration.

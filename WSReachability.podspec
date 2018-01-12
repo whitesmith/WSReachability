@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "WSReachability"
-  s.version          = "2.0.0"
+  s.version          = "2.0.1"
   s.summary          = "An iOS network state monitor"
   s.homepage         = "https://github.com/whitesmith/WSReachability"
   s.license          = 'MIT'

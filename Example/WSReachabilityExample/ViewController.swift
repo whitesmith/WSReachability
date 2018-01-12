@@ -11,7 +11,7 @@ import WSReachability
 
 class ViewController: UIViewController {
 
-    let reachability = WSReachability(forHost: "www.google.pt")
+    let reachability = WSReachability(use: "www.google.pt")
 
     override func viewDidLoad() {
         super.viewDidLoad()

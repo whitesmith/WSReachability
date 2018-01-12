@@ -21,7 +21,7 @@ open class WSReachability {
     fileprivate var lastReachabilityFlag: Bool?
     fileprivate var lastReachabilityTime = Date()
 
-    public init?(forHost host: String) {
+    public init?(use host: String) {
         self.host = host
         guard let reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, host) else {
             log.emit("Setup failed for host \(host)")

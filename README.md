@@ -14,7 +14,7 @@ Monitor the network state of an iOS device using the System Configuration.
 Create an instance passing a host that you want to listen:
 
 ``` swift
-let reachability = WSReachability(forHost: "api.greatproject.io")
+let reachability = WSReachability(use: "api.greatproject.io")
 ```
 
 Listen for event changes:

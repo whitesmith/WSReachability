@@ -3,7 +3,7 @@
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
 [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/WSReachability.svg)](https://cocoapods.org/pods/WSReachability)
-[![Swift 3.0](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms iOS](https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat)](http://www.apple.com/ios/)
 [![License MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://opensource.org/licenses/MIT)
 
@@ -77,7 +77,7 @@ Download all the source files and drop them into your project.
 ## Requirements
 
 * iOS 8.0+
-* Xcode 7.3 (Swift 2.2)
+* Xcode 8.3 (Swift 3.0)
 
 # Contributing
 
